@@ -1,0 +1,19 @@
+<!-- Fajar Maulana Putra: I created this file to display list of organisation items in the main page -->
+{#
+Display a grid of organization items.
+
+organizations - A list of organization.
+
+Example:
+
+    {% snippet "organization/snippets/organization_list.html" %}
+
+#}
+{% block organization_list %}
+  {% block organization_list_inner %}
+    {% for organization in organizations %}
+      {% snippet "organization/snippets/organization_item.html", organization=organization, position=loop.index %}
+    {% endfor %}
+  {% endblock %}
+{% endblock %}
+<!-- Fajar Maulana Putra: End -->

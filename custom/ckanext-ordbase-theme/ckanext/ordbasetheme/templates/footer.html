@@ -1,0 +1,39 @@
+<footer>
+  <div class="container">
+    <div class="grid">
+      <!-- Fajar Maulana Putra: I edited these lines to change the links and labels in order to show pages / websites related to this project -->
+      <div class="grid__col grid__col--1-of-6 footer__links">
+        <ul>
+          <li><a href="{{ h.url_for(controller='home', action='about') }}">{{ _('About') }}</a></li>
+          <li><a href="http://www.ucl.ac.uk/urban-dynamics-lab/about-us">{{ _('Contact') }}</a></li>
+        </ul>
+      </div>
+      <div class="grid__col grid__col--1-of-6 footer__links">
+        <ul class="footer-middle">
+          <li><a href="https://github.com/mgalas/OpenDataHub">{{ _('Project on Github') }}</a></li>
+          <li><a href="http://ckan.org">{{ _('CKAN Association') }}</a></li>
+        </ul>
+      </div>
+      <div class="grid__col grid__col--1-of-6 footer__links">
+        <ul>
+          {% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
+          <li><a href="{{ api_url }}">{{ _('CKAN API') }}</a></li>
+          <li><a href="https://www.opendefinition.org/okd/"><img src="{{ h.url_for_static('base/images/od_80x15_blue.png') }}"/></a></li>
+        </ul>
+      </div>
+      <div class="grid__col grid__col--3-of-6 footer__text">
+        <ul>
+          <li><p>{{ _('Powered by') }} <a href="http://www.udl.ucl.ac.uk">UCL Urban Dynamics Lab</a></p></li>
+          <li><p class="footer-operated">{{ _('Operated by') }} <a href="http://www.ucl.ac.uk">University College London</a></p></li>
+          <li><p>{{ _('Website theme based on') }} <a href="https://github.com/openresearchdata/ckanext-ordbase-theme">Open Research Data</a></p></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Fajar Maulana Putra: End -->
+  </div>
+  {% block footer_debug %}
+    {% if g.debug %}
+      {% include 'snippets/debug.html' %}
+    {% endif %}
+  {% endblock %}
+</footer>

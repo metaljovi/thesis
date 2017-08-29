@@ -1,0 +1,30 @@
+<!-- Fajar Maulana Putra: I created this file to display organisation items in the main page -->
+{#
+Renders a media item for an organization. This should be used in a list.
+
+organization - An organization dict.
+#}
+
+{% set type = organization.type or 'organization' %}
+{% set url = h.url_for(type ~ '_read', action='read', id=organization.name) %}
+{% block item %}
+<div class="data-box">
+  {% block item_inner %}
+  {% block title %}
+    <h3 class="dataset-heading"><a href="{{ url }}" title="{{ _('View {name}').format(name=organization.display_name) }}">
+      {{ organization.display_name }}
+    </a></h3>
+  {% endblock %}
+  {% block datasets %}
+    {% if organization.packages_count %}
+      {% set packages = organization.packages_count %}
+    {% else %}
+      {% set packages = 0 %}
+    {% endif %}
+    {% set packages = organization.package_count  %}
+    <p class="data-count">{{ _('Number of Datasets:') }} {{ packages }}</p>
+  {% endblock %}
+  {% endblock %}
+</div>
+{% endblock %}
+<!-- Fajar Maulana Putra: End -->

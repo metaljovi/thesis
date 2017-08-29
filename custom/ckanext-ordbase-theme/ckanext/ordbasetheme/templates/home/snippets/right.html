@@ -1,0 +1,27 @@
+{% extends "home/snippets/tab-content.html" %}
+
+{% set suffix = 'right' %}
+
+{% block all_items_link %}
+  <a href="{% url_for('organizations_index') %}" class="button">{{ _('Show All') }}</a>
+{% endblock %}
+
+<!-- Fajar Maulana Putra: I edited these lines to show list of organisations instead of groups -->
+{% block first_option_title %}
+  {{ _('Popular Organizations') }}
+{% endblock %}
+
+{% block second_option_title %}
+  {{ _('Featured Organizations') }}
+{% endblock %}
+
+{% block first_option_items %}
+  {% set organizations = h.get_biggest_organizations(3) %}
+  {% snippet "organization/snippets/organization_list.html", organizations=organizations %}
+{% endblock %}
+
+{% block second_option_items %}
+  {% set organizations = h.get_featured_organizations(3) %}
+  {% snippet "organization/snippets/organization_list.html", organizations=organizations %}
+{% endblock %}
+<!-- Fajar Maulana Putra: End -->

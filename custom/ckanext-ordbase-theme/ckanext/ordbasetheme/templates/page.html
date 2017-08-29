@@ -1,0 +1,70 @@
+{% ckan_extends %}
+
+{% block flash %}
+{% endblock %}
+
+{% block toolbar %}
+<div class="toolbar">
+  <div class="grid">
+    <div class="grid__col grid__col--1-of-4 header__content-topmenu toolbar-nav-left">
+      <ul>
+        <!-- Fajar Maulana Putra: I edited these lines to show links to dataset and organisation pages instead of dataset and group pages -->
+        {{ h.build_nav_main(
+          ('search', _('Datasets')),
+          ('organizations_index', _('Organizations'))
+        ) }}
+        <!-- Fajar Maulana Putra: End -->
+      </ul>
+    </div>
+    <div class="grid__col grid__col--1-of-4 header__content-topmenu toolbar-title">
+      <a href="{% url_for('/') %}">
+        <div class="logo"><img src="{{ app_globals.site_logo }}" alt="Logo"></div>
+        <h1>{{ app_globals.site_title }}</h1>
+      </a>
+    </div>
+    <div class="grid__col grid__col--1-of-4 header__content-topmenu toolbar-search">
+      <form class="module-content search-form" method="get" action="{% url_for controller='package', action='search' %}">
+        <div class="search-input control-group">
+          <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="{{ _('Search') }}"/>
+          <button type="submit" value="search">
+            <i class="icon-search"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="grid__col grid__col--1-of-4 header__content-topmenu toolbar-nav-right">
+      <ul>
+        <!-- Fajar Maulana Putra: I edited these lines to show links to data requests and stats pages instead of about, FAQ, and contact pages -->
+	{{ h.build_nav_main(
+          ('datarequests_index', _('Data Requests')),
+          ('stats', _('Stats'))
+        ) }}
+        <!-- Fajar Maulana Putra: End -->
+        
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block pre_primary %}
+<aside class="secondary span3">
+  {#
+  The secondary_content block can be used to add content to the
+  sidebar of the page. This is the main block that is likely to be
+  used within a template.
+
+  Example:
+
+  {% block secondary_content %}
+  <h2>A sidebar item</h2>
+
+  <p>Some content for the item</p>
+  {% endblock %}
+  #}
+  {% block secondary_content %}{% endblock %}
+</aside>
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
